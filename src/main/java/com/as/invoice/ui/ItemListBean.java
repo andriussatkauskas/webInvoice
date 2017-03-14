@@ -27,10 +27,12 @@ public class ItemListBean {
 
 	public String addNew() {
 
-		
-		newItem.setInvoice(invoiceListBean.getInvoicePageData().getCurrentInvoice());
-		invoiceListBean.getInvoicePageData().getCurrentInvoice().addItem(newItem);
-		invoiceRepoImpl.save(invoiceListBean.getInvoicePageData().getCurrentInvoice());
+		Invoice invoice=invoiceListBean.getInvoicePageData().getCurrentInvoice();
+		newItem.setInvoice(invoice);
+		log.info("Adding new item to invoice : {}", invoice);
+		log.info("New item info: {}", newItem);
+		invoice.addItem(newItem);
+		invoiceRepoImpl.save(invoice);
 		
 		return "itemList";
 	}

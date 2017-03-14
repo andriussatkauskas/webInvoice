@@ -28,7 +28,7 @@ public class InvoiceRepoImpl implements InvoiceRepo {
 		this.entityManagerFactory = entityManagerFactory;
 	}
 
-	@Override
+	
 	public Invoice findByNumber(Long number) {
 		EntityManager em = getEntityManager();
 		try {
@@ -43,7 +43,6 @@ public class InvoiceRepoImpl implements InvoiceRepo {
 		}
 	}
 
-	@Override
 	public List<Invoice> findAll() {
 		EntityManager em = getEntityManager();
 		try {
@@ -58,7 +57,7 @@ public class InvoiceRepoImpl implements InvoiceRepo {
 		}
 	}
 
-	@Override
+	
 	public void save(Invoice newInvoice) {
 		EntityManager em = getEntityManager();
 		try {
@@ -73,7 +72,7 @@ public class InvoiceRepoImpl implements InvoiceRepo {
 
 	}
 
-	@Override
+	
 	public void delete(Invoice invoice) {
 		EntityManager em = getEntityManager();
 

@@ -25,11 +25,11 @@ public class ItemRepoImpl implements ItemRepo {
 		this.entityManagerFactory = entityManagerFactory;
 	}
 	
-	private EntityManager getEntityManager() {
+	public EntityManager getEntityManager() {
 		return entityManagerFactory.createEntityManager();
 	}
 
-	@Override
+	
 	public void insertOrUpdate(Item item) {
 		EntityManager em = getEntityManager();
 		try {
@@ -53,7 +53,7 @@ public class ItemRepoImpl implements ItemRepo {
 
 	}
 
-	@Override
+	
 	public void delete(Item item) {
 		EntityManager em = getEntityManager();
 		try {
@@ -66,7 +66,7 @@ public class ItemRepoImpl implements ItemRepo {
 
 	}
 
-	@Override
+	
 	public void deleteById(Long itemId) {
 		EntityManager em = getEntityManager();
 		try {
@@ -81,7 +81,7 @@ public class ItemRepoImpl implements ItemRepo {
 
 	}
 
-	@Override
+	
 	public List<Item> findAll() {
 		EntityManager em = getEntityManager();
 		try {
@@ -96,7 +96,7 @@ public class ItemRepoImpl implements ItemRepo {
 		}
 	}
 
-	@Override
+	
 	public Long countAllItems() {
 		EntityManager em = getEntityManager();
 		try {

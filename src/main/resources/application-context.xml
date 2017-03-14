@@ -36,7 +36,7 @@
 		scope="request" init-method="init" lazy-init="false">
 		<property name="invoiceRepoImpl" ref="invoiceRepoImpl" />
 		<property name="itemRepoImpl" ref="itemRepoImpl" />
-	<!-- 	<property name="newItem" ref="item" />  -->
+		<property name="newItem" ref="item" />  
 		<property name="invoiceListBean" ref="invoiceListBean" />
 	</bean>
 
