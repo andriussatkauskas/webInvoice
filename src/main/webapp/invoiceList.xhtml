@@ -1,0 +1,90 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="sablonas.xhtml">
+
+	<ui:define name="turinys">
+		<h:form>
+
+			
+
+			<p:dataTable value="#{invoiceListBean.invoiceList}" var="invoice">
+
+				<p:column headerText="Number">
+					<h:outputText value="#{invoice.number}" />
+				</p:column>
+
+				<p:column headerText="Date">
+					<h:outputText value="#{invoice.dateOfInvoice}" />
+				</p:column>
+
+				<p:column headerText="Enterprise">
+					<h:outputText value="#{invoice.enterprise}" />
+				</p:column>
+
+				<p:column headerText="Client">
+					<h:outputText value="#{invoice.client}" />
+				</p:column>
+
+				
+
+				
+
+				<p:column headerText="Options">
+					<h:commandButton value="Delete"
+						action="#{invoiceListBean.deleteSelected(invoice)}" />
+					<h:commandButton value="Go in"
+						action="#{invoiceListBean.showAddItemPage(invoice)}" />
+					
+				</p:column>
+			</p:dataTable>
+
+
+		</h:form>
+		<h:form>
+			<p:panel id="basic" header="Invoice" style="margin-bottom:20px">
+				<h:panelGrid id="grid" columns="3" cellpadding="5">
+					<h:outputLabel for="invoiceNumber" value="Invoice number"></h:outputLabel>
+					<h:inputText id="invoiceNumber"
+						value="#{invoicePageData.newInvoice.number}">
+						<f:validateBean />
+					</h:inputText>
+					<p:message for="invoiceNumber" />
+
+					<h:outputLabel for="invoiceDate" value="Invoice date"></h:outputLabel>
+					<h:inputText id="invoiceDate"
+						value="#{invoicePageData.newInvoice.dateOfInvoice}">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</h:inputText>
+					<p:message for="invoiceDate" />
+
+
+					<h:outputLabel for="enterprise" value="Enterprise"></h:outputLabel>
+					<h:inputText id="enterprise"
+						value="#{invoicePageData.newInvoice.enterprise}">
+					</h:inputText>
+					<p:message for="enterprise" />
+
+					<h:outputLabel for="client" value="Client"></h:outputLabel>
+					<h:inputText id="client"
+						value="#{invoicePageData.newInvoice.client}">
+					</h:inputText>
+					<p:message for="client" />
+					
+					<h:commandButton action="#{invoiceListBean.addNew}" value="Add new invoice"
+				update="grid" />
+				</h:panelGrid>
+
+			</p:panel>
+
+			
+		</h:form>
+
+	</ui:define>
+
+	<ui:define name="pavadinimas">
+ 	 	Add new item
+ 	 </ui:define>
+
+</ui:composition>

@@ -1,0 +1,80 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="sablonas.xhtml">
+
+	<ui:define name="turinys">
+
+
+		<h:form>
+			
+
+			<p:dataTable value="#{itemListBean.itemList}" var="item">
+
+				<p:column headerText="Item name">
+					<h:outputText value="#{item.itemName}" />
+				</p:column>
+
+				<p:column headerText="Quantity">
+					<h:outputText value="#{item.quantity}" />
+				</p:column>
+
+				<p:column headerText="Unit of measurment">
+					<h:outputText value="#{item.unitOfMeasurmet}" />
+				</p:column>
+
+				<p:column headerText="Unit Price">
+					<h:outputText value="#{item.price}" />
+				</p:column>
+
+				<p:column headerText="Total price">
+					<h:outputText value="#{item.totalPrice}" />
+				</p:column>
+
+
+
+			</p:dataTable>
+
+		</h:form>
+
+
+		<h:form>
+			
+			<p:panel id="basic" header="Item details" style="margin-bottom:20px">
+				<h:panelGrid id="grid" columns="3" cellpadding="5">
+				
+					<h:outputLabel for="itemName" value="Item name"></h:outputLabel>
+					<h:inputText id="itemName" value="#{itemListBean.newItem.itemName}">
+						<f:validateBean />
+					</h:inputText>
+					<p:message for="itemName" />
+
+					<h:outputLabel for="quantity" value="Quantity"></h:outputLabel>
+					<h:inputText id="quantity" value="#{itemListBean.newItem.quantity}">
+					</h:inputText>
+					<p:message for="quantity" />
+
+					<h:outputLabel for="unitOfMeasurmet" value="Unit Of measurmet"></h:outputLabel>
+					<h:inputText id="unitOfMeasurmet" value="#{itemListBean.newItem.unitOfMeasurmet}">
+					</h:inputText>
+					<p:message for="unitOfMeasurmet" />
+
+					<h:outputLabel for="price" value="Price"></h:outputLabel>
+					<h:inputText id="price" value="#{itemListBean.newItem.price}">
+					</h:inputText>
+					<p:message for="price" />
+				</h:panelGrid>
+
+				<h:commandButton action="#{itemListBean.addNew}" value="Add new item"></h:commandButton>
+			</p:panel>
+		</h:form>
+
+
+	</ui:define>
+
+	<ui:define name="pavadinimas">
+ 	 	Add new item
+ 	 </ui:define>
+
+</ui:composition>
