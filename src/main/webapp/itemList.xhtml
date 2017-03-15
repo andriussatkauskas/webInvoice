@@ -10,26 +10,26 @@
 		<h:form>
 			
 
-			<p:dataTable value="#{itemListBean.itemList}" var="item">
+			<p:dataTable value="#{itemListBean.itemList}" var="itemN">
 
 				<p:column headerText="Item name">
-					<h:outputText value="#{item.itemName}" />
+					<h:outputText value="#{itemN.itemName}" />
 				</p:column>
 
 				<p:column headerText="Quantity">
-					<h:outputText value="#{item.quantity}" />
+					<h:outputText value="#{itemN.quantity}" />
 				</p:column>
 
 				<p:column headerText="Unit of measurment">
-					<h:outputText value="#{item.unitOfMeasurmet}" />
+					<h:outputText value="#{itemN.unitOfMeasurmet}" />
 				</p:column>
 
 				<p:column headerText="Unit Price">
-					<h:outputText value="#{item.price}" />
+					<h:outputText value="#{itemN.price}" />
 				</p:column>
 
 				<p:column headerText="Total price">
-					<h:outputText value="#{item.totalPrice}" />
+					<h:outputText value="#{itemN.totalPrice}" />
 				</p:column>
 
 
