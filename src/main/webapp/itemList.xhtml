@@ -8,10 +8,14 @@
 
 
 		<h:form>
-			
+
 
 			<p:dataTable value="#{itemListBean.itemList}" var="itemN">
-
+		<!-- 		<f:facet name="header">
+					<h:outputText
+						value="Invoice number : #{invoiceListBean.invoicePagedata.currentInvoice.number}" />
+				</f:facet>
+ -->
 				<p:column headerText="Item name">
 					<h:outputText value="#{itemN.itemName}" />
 				</p:column>
@@ -31,19 +35,23 @@
 				<p:column headerText="Total price">
 					<h:outputText value="#{itemN.totalPrice}" />
 				</p:column>
-
-
-
+				
+				<p:column headerText="Options">
+					<h:commandButton value="Delete"
+						action="#{itemListBean.deleteSelected(item)}" />
+					
+					
+				</p:column>
 			</p:dataTable>
 
 		</h:form>
 
 
 		<h:form>
-			
+
 			<p:panel id="basic" header="Item details" style="margin-bottom:20px">
 				<h:panelGrid id="grid" columns="3" cellpadding="5">
-				
+
 					<h:outputLabel for="itemName" value="Item name"></h:outputLabel>
 					<h:inputText id="itemName" value="#{itemListBean.newItem.itemName}">
 						<f:validateBean />
@@ -56,7 +64,8 @@
 					<p:message for="quantity" />
 
 					<h:outputLabel for="unitOfMeasurmet" value="Unit Of measurmet"></h:outputLabel>
-					<h:inputText id="unitOfMeasurmet" value="#{itemListBean.newItem.unitOfMeasurmet}">
+					<h:inputText id="unitOfMeasurmet"
+						value="#{itemListBean.newItem.unitOfMeasurmet}">
 					</h:inputText>
 					<p:message for="unitOfMeasurmet" />
 
@@ -66,7 +75,8 @@
 					<p:message for="price" />
 				</h:panelGrid>
 
-				<h:commandButton action="#{itemListBean.addNew}" value="Add new item"></h:commandButton>
+				<h:commandButton action="#{itemListBean.addNew}"
+					value="Add new item"></h:commandButton>
 			</p:panel>
 		</h:form>
 

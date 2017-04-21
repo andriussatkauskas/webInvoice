@@ -24,7 +24,7 @@
 		scope="session" init-method="init" />
 
 	<bean id="invoiceListBean" class="com.as.invoice.ui.InvoiceListBean"
-		scope="request">
+		scope="prototype">
 		<property name="invoicePageData" ref="invoicePageData" />
 		<property name="invoiceRepoImpl" ref="invoiceRepoImpl" />
 	</bean>
@@ -33,7 +33,7 @@
 		scope="session"></bean>
 
 	<bean id="itemListBean" class="com.as.invoice.ui.ItemListBean"
-		scope="request" init-method="init" lazy-init="false">
+		scope="prototype" init-method="init" lazy-init="false">
 		<property name="invoiceRepoImpl" ref="invoiceRepoImpl" />
 		<property name="itemRepoImpl" ref="itemRepoImpl" />
 		<property name="newItem" ref="item" />  
