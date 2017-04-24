@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+					    http://www.springframework.org/schema/beans/spring-beans.xsd
+					    http://www.springframework.org/schema/data/jpa
+						http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+
+    <jpa:repositories base-package="com.as.invoice.repo" />
+    
+    <bean id="transactionManager"
+			class="org.springframework.orm.jpa.JpaTransactionManager"
+			p:entityManagerFactory-ref="entityManagerFactory"/>
 
 	<bean id="anoproc"
 		class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+		
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="persistenceUnit" />
-	</bean>
-
+	</bean>	
+	
 	<bean id="invoiceRepoImpl" class="com.as.invoice.repo.jpa.InvoiceRepoImpl"
 		scope="singleton">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
@@ -24,16 +36,16 @@
 		scope="session" init-method="init" />
 
 	<bean id="invoiceListBean" class="com.as.invoice.ui.InvoiceListBean"
-		scope="prototype">
+		scope="request">
 		<property name="invoicePageData" ref="invoicePageData" />
-		<property name="invoiceRepoImpl" ref="invoiceRepoImpl" />
+	    <property name="invoiceRepoImpl" ref="invoiceRepo" /> 
 	</bean>
 
 	<bean id="item" class="com.as.invoice.entities.Item"
 		scope="session"></bean>
 
 	<bean id="itemListBean" class="com.as.invoice.ui.ItemListBean"
-		scope="prototype" init-method="init" lazy-init="false">
+		scope="request" init-method="init" lazy-init="false">
 		<property name="invoiceRepoImpl" ref="invoiceRepoImpl" />
 		<property name="itemRepoImpl" ref="itemRepoImpl" />
 		<property name="newItem" ref="item" />  

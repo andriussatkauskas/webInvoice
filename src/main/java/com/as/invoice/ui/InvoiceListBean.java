@@ -17,8 +17,10 @@ public class InvoiceListBean {
 	static final Logger log = LoggerFactory.getLogger(InvoiceListBean.class);
 
 	
-
-	public static class InvoicePageData implements Serializable {
+	
+	//--------container-------------
+	
+ public static class InvoicePageData implements Serializable {
 
 		private static final long serialVersionUID = -3924198083822619907L;
 
@@ -59,11 +61,15 @@ public class InvoiceListBean {
 			this.foundInvoices = foundInvoices;
 		}
 	}
-
+//-----------bean fields---------------
+ 
+ 
 	private InvoicePageData invoicePageData;
 
 	private InvoiceRepo invoiceRepoImpl;
-
+	
+	
+//---------bean methods---------------
 	public String addNew() {
 		invoiceRepoImpl.save(invoicePageData.newInvoice);
 		invoicePageData.newInvoice = new Invoice();
@@ -72,6 +78,9 @@ public class InvoiceListBean {
 	}
 
 	public String deleteSelected(Invoice invoice) {
+		
+		
+		
 		invoiceRepoImpl.delete(invoice);
 
 		return "invoiceList";
@@ -81,11 +90,13 @@ public class InvoiceListBean {
 		invoicePageData.currentInvoice = invoice;
 		return "itemList";
 	}	
-
+		
 	public List<Invoice> getInvoiceList() {
 		return invoiceRepoImpl.findAll();
 	}
-
+	
+	
+	//----------get and set-----------------
 	public InvoicePageData getInvoicePageData() {
 		return invoicePageData;
 	}
