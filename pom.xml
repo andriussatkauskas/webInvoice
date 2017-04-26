@@ -62,12 +62,8 @@
 		<hibernate-validator.version>5.4.0.Final</hibernate-validator.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-	
 
 	<dependencies>
-	
-	
-			
 
 		<!-- junit -->
 		<dependency>
