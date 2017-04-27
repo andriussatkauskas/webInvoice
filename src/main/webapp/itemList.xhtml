@@ -32,7 +32,15 @@
 					<h:outputText value="#{itemN.totalPrice}" />
 				</p:column>
 
-
+				<p:column headerText="Options">
+					<h:commandButton value="Delete"
+						action="#{itemListBean.deleteSelected(itemN)}"	 />
+						
+					<h:commandButton value="Update"
+						 />
+					
+					
+				</p:column>
 
 			</p:dataTable>
 

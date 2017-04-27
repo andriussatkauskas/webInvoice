@@ -18,20 +18,27 @@ public class Item implements Serializable{
 	
 	private String itemName;
 	
-	private int quantity;
+	private Integer quantity;
 	
 	private String unitOfMeasurmet;
 	
-	private double price;
+	private Double price;
 	
 	@JoinColumn(name = "invoice_id")
-	@ManyToOne(optional = true, cascade = { CascadeType.ALL})
+	@ManyToOne
 	private Invoice invoice;
+	
+	
 	
 	public double getTotalPrice(){
 		return price*quantity;
 	}
 
+	
+	//--------GetSet----------
+	
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -40,7 +47,7 @@ public class Item implements Serializable{
 		return itemName;
 	}
 
-	public int getQuantity() {
+	public Integer getQuantity() {
 		return quantity;
 	}
 
@@ -48,7 +55,7 @@ public class Item implements Serializable{
 		return unitOfMeasurmet;
 	}
 
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
@@ -64,7 +71,7 @@ public class Item implements Serializable{
 		this.itemName = itemName;
 	}
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 
@@ -72,7 +79,7 @@ public class Item implements Serializable{
 		this.unitOfMeasurmet = unitOfMeasurmet;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
@@ -80,11 +87,7 @@ public class Item implements Serializable{
 		this.invoice = invoice;
 	}
 
-	
-	
-	
-
-	
+		
 	
 	
 }

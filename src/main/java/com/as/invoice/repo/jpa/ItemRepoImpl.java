@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import com.as.invoice.entities.Invoice;
 import com.as.invoice.entities.Item;
 import com.as.invoice.repo.ItemRepo;
 
@@ -42,10 +43,12 @@ public class ItemRepoImpl implements ItemRepo {
 				} else 
 					em.persist(i);
 			}
+			
 			if(merged)
 				em.merge(item);
 			else
 				em.persist(item);
+			
 			em.getTransaction().commit();
 		} finally {
 			em.close();
@@ -58,7 +61,20 @@ public class ItemRepoImpl implements ItemRepo {
 		EntityManager em = getEntityManager();
 		try {
 			em.getTransaction().begin();
+			
+			Invoice invoice=item.getInvoice();
+			invoice.getItems().remove(item);
+			
+			if (!em.contains(invoice))
+				invoice = em.merge(invoice);
+			em.persist(invoice);
+			
+			item = em.merge(item);
 			em.remove(item);
+			
+			
+			
+			
 			em.getTransaction().commit();
 		} finally {
 			em.close();

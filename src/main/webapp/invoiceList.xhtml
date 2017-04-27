@@ -16,7 +16,7 @@
 				</p:column>
 
 				<p:column headerText="Date">
-					<h:outputText value="#{invoice.dateOfInvoice}" />
+					<h:outputText value="#{invoice.dateOfInvoice}" /> 
 				</p:column>
 
 				<p:column headerText="Enterprise">
@@ -45,31 +45,31 @@
 		<h:form>
 			<p:panel id="basic" header="Invoice" style="margin-bottom:20px">
 				<h:panelGrid id="grid" columns="3" cellpadding="5">
-					<h:outputLabel for="invoiceNumber" value="Invoice number"></h:outputLabel>
-					<h:inputText id="invoiceNumber"
+					
+					<p:outputLabel for="invoiceNumber" value="Invoice number"></p:outputLabel>
+					<p:inputText id="invoiceNumber"
 						value="#{invoicePageData.newInvoice.number}">
 						<f:validateBean />
-					</h:inputText>
+					</p:inputText>
 					<p:message for="invoiceNumber" />
 
-					<h:outputLabel for="invoiceDate" value="Invoice date"></h:outputLabel>
-					<h:inputText id="invoiceDate"
-						value="#{invoicePageData.newInvoice.dateOfInvoice}">
+					<p:outputLabel for="invoiceDate" value="Invoice date"></p:outputLabel>
+						<p:calendar id="invoiceDate" value="#{invoicePageData.newInvoice.dateOfInvoice}" required="true" label="Invoice date" pattern="yyyy-MM-dd" mask="true" >
 						<f:convertDateTime pattern="yyyy-MM-dd" />
-					</h:inputText>
+						</p:calendar>					
 					<p:message for="invoiceDate" />
 
 
-					<h:outputLabel for="enterprise" value="Enterprise"></h:outputLabel>
-					<h:inputText id="enterprise"
+					<p:outputLabel for="enterprise" value="Enterprise"></p:outputLabel>
+					<p:inputText id="enterprise"
 						value="#{invoicePageData.newInvoice.enterprise}">
-					</h:inputText>
+					</p:inputText>
 					<p:message for="enterprise" />
 
-					<h:outputLabel for="client" value="Client"></h:outputLabel>
-					<h:inputText id="client"
+					<p:outputLabel for="client" value="Client"></p:outputLabel>
+					<p:inputText id="client"
 						value="#{invoicePageData.newInvoice.client}">
-					</h:inputText>
+					</p:inputText>
 					<p:message for="client" />
 					
 					<h:commandButton action="#{invoiceListBean.addNew}" value="Add new invoice"

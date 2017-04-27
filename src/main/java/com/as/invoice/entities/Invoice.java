@@ -24,7 +24,7 @@ public class Invoice implements Serializable {
 	private String enterprise;
 	private String client;
 
-	@OneToMany(mappedBy = "invoice", fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@OneToMany(mappedBy = "invoice", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval=true )
 	private List<Item> items;
 
 	public void addItem(Item item) {
@@ -37,10 +37,13 @@ public class Invoice implements Serializable {
 		}
 	}
 
+	
+	//---------GetSet-----------
+	
 	public Long getId() {
 		return id;
-	}
-
+	}	
+	
 	public Date getDateOfInvoice() {
 		return dateOfInvoice;
 	}
