@@ -45,7 +45,11 @@
 			</p:dataTable>
 
 		</h:form>
-
+		
+        <f:facet name="facet" >
+       		 bum
+            #{itemListBean.invoiceTotalPrice()}
+        </f:facet>
 
 		<h:form>
 			
@@ -64,9 +68,13 @@
 					<p:message for="quantity" />
 
 					<h:outputLabel for="unitOfMeasurmet" value="Unit Of measurmet"></h:outputLabel>
-					<h:inputText id="unitOfMeasurmet" value="#{itemListBean.newItem.unitOfMeasurmet}">
-					</h:inputText>
+					<p:selectOneRadio id="unitOfMeasurmet" value="#{itemListBean.newItem.unitOfMeasurmet}">
+					<f:selectItem itemLabel="Kg" itemValue="Kg" />
+	            	<f:selectItem itemLabel="Vnt" itemValue="Vnt" />
+					</p:selectOneRadio>
 					<p:message for="unitOfMeasurmet" />
+					
+					
 
 					<h:outputLabel for="price" value="Price"></h:outputLabel>
 					<h:inputText id="price" value="#{itemListBean.newItem.price}">

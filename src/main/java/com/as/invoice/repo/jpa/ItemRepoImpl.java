@@ -59,22 +59,10 @@ public class ItemRepoImpl implements ItemRepo {
 	
 	public void delete(Item item) {
 		EntityManager em = getEntityManager();
-		try {
-			em.getTransaction().begin();
-			
-			Invoice invoice=item.getInvoice();
-			invoice.getItems().remove(item);
-			
-			if (!em.contains(invoice))
-				invoice = em.merge(invoice);
-			em.persist(invoice);
-			
-			item = em.merge(item);
-			em.remove(item);
-			
-			
-			
-			
+		try {			
+			em.getTransaction().begin();			
+			item=em.merge(item);			
+			em.remove(item);			
 			em.getTransaction().commit();
 		} finally {
 			em.close();

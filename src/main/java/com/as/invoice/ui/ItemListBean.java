@@ -42,10 +42,26 @@ public class ItemListBean {
 	}
 	
 	public String deleteSelected(Item item) {
-		itemRepoImpl.delete(item);		
+		Invoice invoice=invoiceListBean.getInvoicePageData().getCurrentInvoice();
+		invoice.getItems().remove(item);
+		itemRepoImpl.delete(item);
+		invoiceRepoImpl.save(invoice);		
+		
 	return "itemList";
 }
 
+	
+	public double invoiceTotalPrice(){
+		double total=0;
+		Invoice invoice=invoiceListBean.getInvoicePageData().getCurrentInvoice();
+		for(Item i:invoice.getItems()){
+			total+=i.getTotalPrice();
+		}
+		
+		return total;
+	}
+	
+	//---GetSet-----
 	public InvoiceRepo getInvoiceRepoImpl() {
 		return invoiceRepoImpl;
 	}
